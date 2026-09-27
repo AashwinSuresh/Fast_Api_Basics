@@ -4,7 +4,7 @@ A hands-on FastAPI course repository.
 
 ## Roadmap
 
-01. First FastAPI App
+00. Async Python Foundation\n01. First FastAPI App
 02. Routing & Path Parameters
 03. Query Parameters
 04. Request Bodies
@@ -12,7 +12,7 @@ A hands-on FastAPI course repository.
 06. Response Models & Status Codes
 07. CRUD API (In-Memory)
 08. Error Handling
-09. API Documentation
+09. API Documentation\n11. Response Types
 10. Project Structure & APIRouter
 11. SQLite Database
 12. SQLAlchemy
