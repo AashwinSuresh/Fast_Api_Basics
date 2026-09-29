@@ -1,11 +1,21 @@
 from fastapi import APIRouter
-
+from pydantic import BaseModel
+from routers import student_db as db
 router = APIRouter(prefix="/students", tags=["Students"])
+
+class Student(BaseModel):
+    name:str
+    age:int
+    department:str
+
 
 @router.get("/")
 def list_students():
-    return {"students": []}
+    return {"students": db}
 
-@router.get("/{student_id}")
-def get_student(student_id: int):
-    return {"student_id": student_id}
+@router.post("/insert")
+def add_students(student:Student):
+    db.append(student)
+    return {"message": "Added student"}
+
+
