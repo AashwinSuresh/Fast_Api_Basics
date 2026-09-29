@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
-
+from backend import database as db
 app = FastAPI(title="FastAPI Basics - Lesson 05")
 
 class StudentCreate(BaseModel):
@@ -11,4 +11,11 @@ class StudentCreate(BaseModel):
 
 @app.post("/students")
 def create_student(student: StudentCreate):
+    db.append(student)
     return {"message": "Validated successfully", "student": student}
+@app.get('/show_students')
+def show_studs():
+    return db
+
+
+#alternatives 

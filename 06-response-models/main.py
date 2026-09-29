@@ -13,6 +13,10 @@ class StudentResponse(BaseModel):
     name: str
     age: int
 
+id = 0
+
 @app.post("/students", response_model=StudentResponse, status_code=status.HTTP_201_CREATED)
 def create_student(student: StudentCreate):
-    return {"id": 1, "name": student.name, "age": student.age, "password": student.password}
+    global id
+    id+=1
+    return {"id": id, "name": student.name, "age": student.age, "password": student.password}

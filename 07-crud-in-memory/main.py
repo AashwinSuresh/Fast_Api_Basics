@@ -17,7 +17,9 @@ next_id = 1
 @app.post("/students", response_model=Student, status_code=status.HTTP_201_CREATED)
 def create_student(data: StudentCreate):
     global next_id
+    print(type(data))
     student = Student(id=next_id, **data.model_dump())
+    print(type(student))
     students.append(student)
     next_id += 1
     return student
@@ -33,7 +35,7 @@ def get_student(student_id: int):
             return student
     raise HTTPException(404, "Student not found")
 
-@app.put("/students/{student_id}", response_model=Student)
+@app.put("/students/{student_id}", response_model=Student) #replace
 def update_student(student_id: int, data: StudentCreate):
     for i, student in enumerate(students):
         if student.id == student_id:
