@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student App</title>
+</head>
+
+<body>
+
+    <h1>Student Manager</h1>
+
+    <!-- Form for creating a student -->
+
+    <input
+        id="name"
+        type="text"
+        placeholder="Student name"
+    >
+
+    <input
+        id="age"
+        type="number"
+        placeholder="Age"
+    >
+
+    <button onclick="addStudent()">
+        Add Student
+    </button>
+
+
+    <h2>Students</h2>
+
+    <ul id="student-list"></ul>
+
+
+    <script>
+
+        // --------------------------------
+        // Get students from FastAPI
+        // --------------------------------
+
+        async function loadStudents() {
+
+            const response = await fetch(
+                "http://localhost:8000/students"
+            );
+
+            const students = await response.json();
+
+            const list = document.getElementById("student-list");
+
+            // Clear the current list
+            list.innerHTML = "";
+
+            // Add each student to the webpage
+            students.forEach(student => {
+
+                const item = document.createElement("li");
+
+                item.textContent =
+                    `${student.id} - ${student.name} - ${student.age}`;
+
+                list.appendChild(item);
+            });
+        }
+
+
+        // --------------------------------
+        // Add a new student
+        // --------------------------------
+
+        async function addStudent() {
+
+            const name =
+                document.getElementById("name").value;
+
+            const age =
+                document.getElementById("age").value;
+
+
+            // Send data to FastAPI
+            const response = await fetch(
+                "http://localhost:8000/students",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        name: name,
+                        age: Number(age)
+                    })
+                }
+            );
+
+
+            // Get the data returned by FastAPI
+            const student = await response.json();
+
+
+            console.log(student);
+
+
+            // Reload the student list
+            loadStudents();
+
+
+            // Clear the inputs
+            document.getElementById("name").value = "";
+            document.getElementById("age").value = "";
+        }
+
+
+        // Load students when the page opens
+        loadStudents();
+
+    </script>
+
+</body>
+</html>
