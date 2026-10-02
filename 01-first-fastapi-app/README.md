@@ -1,7 +1,9 @@
 # Lesson 01 — First FastAPI App
 
-Goal: build and run the smallest FastAPI application.
+This is the smallest FastAPI application in the course.
 
-Learn: FastAPI(), routes, JSON responses, Uvicorn, and `/docs`.
+FastAPI() creates the application. The @app.get() decorators connect URLs to Python functions. Returning a dictionary makes FastAPI send a JSON response.
 
-Run: `uvicorn main:app --reload`
+The application also provides automatic API documentation at /docs.
+
+Run: uvicorn main:app --reload
