@@ -1,5 +1,9 @@
 # Lesson 03 — Query Parameters
 
-Learn optional filters, default values, and multiple query parameters.
+Query parameters are values added after ? in a URL.
 
-Try `/students?department=CSE&year=4`.
+In this example, department and year are optional filters. The str | None = None and int | None = None annotations mean that either value may be missing.
+
+The code applies whichever filters were provided.
+
+Try /students?department=CSE&year=4.
