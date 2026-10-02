@@ -1,9 +1,11 @@
-# Lesson 11 — Response Types
+# Lesson 14 — Response Types
 
-FastAPI normally returns JSON, but an API can return many other representations.
+FastAPI can return more than JSON.
 
-Topics: Plain text, HTML, files, images/PDFs, CSV, XML, generic Response, media_type, response_class, and Swagger/OpenAPI response documentation.
+PlainTextResponse sends plain text, HTMLResponse sends HTML, and FileResponse sends a file from the server.
 
-This is intentionally a single-file reference lesson so students can compare response formats side by side.
+The generic Response class is useful when you want to control the response content, media type, or headers yourself. The examples use it for plain text, CSV, and XML.
 
-Run: `uvicorn main:app --reload` and open `/docs`.
+Content-Type tells the client what kind of data it received. Content-Disposition can tell the browser to display a response inline or treat it as a downloadable file.
+
+The sample PDF must exist in the files folder before the download endpoint is tested.
