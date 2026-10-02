@@ -33,7 +33,7 @@ def get_student(student_id: int):
             return student
     raise HTTPException(404, "Student not found")
 
-@app.put("/students/{student_id}", response_model=Student) #replace
+@app.put("/students/{student_id}", response_model=Student)
 def update_student(student_id: int, data: StudentCreate):
     for i,student in enumerate(students):
         if student.id == student_id:
