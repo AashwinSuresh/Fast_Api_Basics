@@ -3,7 +3,7 @@ import time
 
 from fastapi import FastAPI
 
-app = FastAPI(title="FastAPI Basics - Lesson 14")
+app = FastAPI(title="FastAPI Basics - Lesson 13")
 
 
 # ------------------------------------------------------------

@@ -1,7 +1,7 @@
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
-app = FastAPI(title="FastAPI Basics - Lesson 15")
+app = FastAPI(title="FastAPI Basics - Lesson 14")
 security = HTTPBearer()
 
 @app.get("/public")
