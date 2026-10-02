@@ -10,6 +10,8 @@ def public_route():
 
 @app.get("/protected")
 def protected_route(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    print("credentials.scheme",credentials.scheme)
+    print("credentials.credentials",credentials.credentials)
     if credentials.credentials != "demo-token":
         raise HTTPException(status_code=401, detail="Invalid token")
     return {"message": "Protected endpoint"}
