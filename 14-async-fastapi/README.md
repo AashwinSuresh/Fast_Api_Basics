@@ -1,3 +1,9 @@
-# Lesson 14 — Async FastAPI
+# Lesson 16 — Async FastAPI
 
-Connect the existing asyncio knowledge to FastAPI `async def` endpoints. Focus on I/O-bound work and when async is useful.
+An async def FastAPI route can use asynchronous operations without blocking while it waits.
+
+The two helper functions simulate I/O work with asyncio.sleep(2). In a real application, the waiting could come from a database, another API, or a network operation.
+
+asyncio.gather() runs both operations concurrently, so the example can complete in roughly the time of the longer operation rather than waiting for each one separately.
+
+time.perf_counter() measures the elapsed time accurately.
