@@ -7,7 +7,6 @@ Build a small production-style API from the concepts in this course.
 - students CRUD
 - courses CRUD
 - Pydantic schemas
-- SQLAlchemy
 - dependency injection
 - error handling
 - tests

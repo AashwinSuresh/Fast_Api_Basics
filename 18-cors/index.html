@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CORS Demo</title>
+</head>
+
+<body>
+
+    <h1>CORS Demo</h1>
+
+    <button onclick="getMessage()">
+        Get Message
+    </button>
+
+    <p id="result"></p>
+
+    <script>
+        async function getMessage() {
+
+            const response = await fetch(
+                "http://localhost:8000/message"
+            );
+
+            const data = await response.json();
+
+            document.getElementById("result").textContent =
+                data.message;
+        }
+    </script>
+
+</body>
+</html>
+
+<!-- python -m http.server 3000 -->
+<!--http://localhost:3000-->
