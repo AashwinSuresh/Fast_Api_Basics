@@ -13,9 +13,10 @@ class StudentCreate(BaseModel):
 def create_student(student: StudentCreate):
     db.append(student)
     return {"message": "Validated successfully", "student": student}
+
 @app.get('/show_students')
 def show_studs():
     return db
 
 
-#alternatives 
+

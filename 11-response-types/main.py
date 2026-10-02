@@ -29,22 +29,25 @@ def get_report():
     report_path = Path(__file__).parent / "files" / "report.pdf"
     return FileResponse(report_path, filename="monthly_report.pdf")
 
-# 4. Generic Response — CSV
-@app.get("/export-csv")
-def export_csv():
-    csv_data = "name,role\\nAlice,Admin\\nBob,User"
-    return Response(content=csv_data, media_type="text/csv")
-
-# 5. Generic Response — XML
-@app.get("/xml-data")
-def export_xml():
-    xml_data = "<user><name>Alice</name><role>Admin</role></user>"
-    return Response(content=xml_data, media_type="application/xml")
-
-# 6. Explicit media type without a dedicated response class
+# 4. Explicit media type without a dedicated response class
 @app.get("/media-type-example")
 def media_type_example():
     return Response(
         content="This response explicitly declares its media type.",
         media_type="text/plain",
     )
+
+#EXAMPLES OF MEDIA TYPE WITHOUT A DEDICATED RESPONSE CLASS 
+
+# 1. Generic Response — CSV
+@app.get("/export-csv")
+def export_csv():
+    csv_data = "name,role\nAlice,Admin\nBob,User"
+    return Response(content=csv_data, media_type="text/csv", headers={"Content-Disposition":"attachment; filename=data.csv"}) #another content-disposition type : inline
+
+# 2. Generic Response — XML
+@app.get("/xml-data")
+def export_xml():
+    xml_data = "<user><name>Alice</name><role>Admin</role></user>"
+    return Response(content=xml_data, media_type="application/xml", headers={"Content-Disposition":"attachment; filename=data.xml"})
+

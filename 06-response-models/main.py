@@ -20,3 +20,6 @@ def create_student(student: StudentCreate):
     global id
     id+=1
     return {"id": id, "name": student.name, "age": student.age, "password": student.password}
+
+
+
