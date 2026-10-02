@@ -1,3 +1,9 @@
-# Lesson 15 — Authentication Basics
+# Lesson 17 — Authentication Basics
 
-Learn authentication vs authorization, bearer tokens, and protected routes. The first exercise teaches the flow before production-grade password/token handling.
+Authentication checks who is making a request. Authorization controls what that authenticated user is allowed to access.
+
+HTTPBearer() tells FastAPI to expect a bearer token in the Authorization header.
+
+Depends(security) extracts the credentials and passes them to the route.
+
+This example uses the fixed value demo-token only to demonstrate the flow. It is not a production authentication system and does not store users or securely issue tokens.
