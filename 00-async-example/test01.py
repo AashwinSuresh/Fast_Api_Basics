@@ -1,5 +1,3 @@
-# Existing async/await foundation example
-
 import asyncio
 import time
 
